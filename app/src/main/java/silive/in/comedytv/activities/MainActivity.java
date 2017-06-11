@@ -3,6 +3,8 @@ package silive.in.comedytv.activities;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,9 +16,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import silive.in.comedytv.R;
+import silive.in.comedytv.adapters.ViewPagerAdapter;
+import silive.in.comedytv.fragments.FragmentHome;
+import silive.in.comedytv.fragments.FragmentMemes;
+import silive.in.comedytv.fragments.FragmentProfile;
+import silive.in.comedytv.fragments.FragmentTrending;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    TabLayout tab_layout;
+    ViewPager view_pager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +33,18 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        view_pager = (ViewPager) findViewById(R.id.view_pager);
+        setupViewPager(view_pager);
+
+        tab_layout = (TabLayout) findViewById(R.id.tab_layout);
+        tab_layout.setupWithViewPager(view_pager);
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -42,6 +54,15 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new FragmentHome(), "ONE");
+        adapter.addFragment(new FragmentMemes(), "TWO");
+        adapter.addFragment(new FragmentTrending(), "THREE");
+        adapter.addFragment(new FragmentProfile(), "FOUR");
+        viewPager.setAdapter(adapter);
     }
 
     @Override
