@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FragmentHome(), "ONE");
-        adapter.addFragment(new FragmentMemes(), "TWO");
-        adapter.addFragment(new FragmentTrending(), "THREE");
-        adapter.addFragment(new FragmentProfile(), "FOUR");
+        adapter.addFragment(new FragmentHome(), "HOME");
+        adapter.addFragment(new FragmentMemes(), "MEMES");
+        adapter.addFragment(new FragmentTrending(), "VEERING");
+        adapter.addFragment(new FragmentProfile(), "PROFILE");
         viewPager.setAdapter(adapter);
     }
 
@@ -103,13 +103,13 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_cat_one) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_cat_two) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_cat_three) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_cat_four) {
 
         } else if (id == R.id.nav_share) {
 
