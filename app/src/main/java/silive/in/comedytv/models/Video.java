@@ -9,9 +9,10 @@ public class Video {
     private String category;
     private Integer img_of_video;
 
-    public Video(String name_of_video, String category) {
+    public Video(String name_of_video, String category, Integer img_of_video) {
         this.name_of_video = name_of_video;
         this.category = category;
+        this.img_of_video = img_of_video;
     }
 
     public String getName_of_video() {
