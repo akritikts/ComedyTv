@@ -7,6 +7,7 @@ package silive.in.comedytv.models;
 public class Video {
     private String name_of_video;
     private String category;
+    private Integer img_of_video;
 
     public Video(String name_of_video, String category) {
         this.name_of_video = name_of_video;
@@ -14,6 +15,7 @@ public class Video {
     }
 
     public String getName_of_video() {
+
         return name_of_video;
     }
 
@@ -27,5 +29,13 @@ public class Video {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Integer getImg_of_video() {
+        return img_of_video;
+    }
+
+    public void setImg_of_video(Integer img_of_video) {
+        this.img_of_video = img_of_video;
     }
 }
